@@ -1,0 +1,50 @@
+<!-- 公用网页部分 -->
+<!-- 登录注册按钮 与 用户名和注销按钮 根据登录状态切换-->
+<!-- <ul class="navbar-nav">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages and messages[0][0] == 'success' %}
+        <li class="nav-item">
+            <a class="nav-link" href="#" id="user_flag">{{ messages[0][1] }}</a>
+        </li>
+        <span class="navbar-text">|</span>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('logout')}}">注销</a>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('login')}}" id="user_flag">登录</a>
+        </li>
+        <span class="navbar-text">|</span>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('register')}}">注册</a>
+        </li>
+    {% endif %}
+    {% endwith %}
+</ul> -->
+
+
+<ul class="navbar-nav">
+    {% if username != '' %}
+        <li class="nav-item">
+            <a class="nav-link" href="#" id="user_flag">{{ username }}</a>
+        </li>
+        <span class="navbar-text">|</span>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('logout')}}">注销</a>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('login')}}" id="user_flag">登录</a>
+        </li>
+        <span class="navbar-text">|</span>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('register')}}">注册</a>
+        </li>
+    {% endif %}
+</ul>
+
+
+
+
+
+

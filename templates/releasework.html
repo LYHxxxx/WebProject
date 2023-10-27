@@ -1,0 +1,124 @@
+<!-- 上传作品界面 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>RecipeWeb</title>
+    <link rel="stylesheet" href="./../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./../static/css/comment.css">
+    <link rel="stylesheet" href="./../static/css/index.css">
+
+    <script type="text/javascript" src="./../static/js/jquery.js"></script>
+    <script type="text/javascript" src="./../static/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="./../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./../static/js/releasework.js"></script>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top justify-content-center">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand fontsize_0">
+                <img src="./../static/imgs/logo1.png" width="40px" height="40px">
+                <img src="./../static/imgs/logo2.png" width="100%" height="40px">
+            </a>
+            <!-- 功能菜单 -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('index')}}">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('recipe')}}">食谱</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('food')}}">食材</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('news')}}">饮食新闻</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('userwork')}}">用户作品</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('releasework')}}">发布作品</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">个人中心</a>
+                </li> -->
+            </ul>
+            <!-- 搜索框-表单 -->
+            <form class="form-inline" method="get" action="/search">
+                <div class="input-group input-group-sm" placeholder="搜素食谱、食材">
+                    <input type="text" class="form-control" name="inputname">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit">搜索</button>
+                    </div>
+                </div>
+            </form>
+            <!-- 登录注册按钮 -->
+            {% include 'comment.html' %}
+        </div>
+    </nav>
+    <br><br><br>
+
+    <!-- 主体内容 -->
+    <div class="container">
+        <form method="post" action="/upload" enctype="multipart/form-data" class="register needs-validation" novalidate>
+            <div class="form-group">
+                <label for="workname">作品名称：</label>
+                <textarea rows="2" type="text" class="form-control" id="workname" placeholder="输入作品名称" name="workname" required></textarea>
+                <div class="invalid-feedback">请输入作品名称！</div>
+            </div>
+            <div class="form-group">
+                <label for="workimg">作品图片：</label>
+                <br>
+                <input type="file" class="form-control" id="workimg" placeholder="上传作品图片" name="workimg" accept="image/*" required>
+                <div class="invalid-feedback">请上传作品图片！</div>
+            </div>
+            <div class="form-group">
+                <label for="workmaterial">作品用料：</label>
+                <textarea rows="2" type="text" class="form-control" id="workmaterial" placeholder="请输入作品用料"
+                    name="workmaterial" required></textarea>
+                <div class="invalid-feedback">请输入作品用料！</div>
+            </div>
+            <div class="form-group">
+                <label for="workinfo">作品介绍：</label>
+                <textarea rows="10" type="text" class="form-control" id="workinfo" placeholder="请输入作品介绍" name="workinfo"
+                    required></textarea>
+                <div class="invalid-feedback">请输入作品介绍！</div>
+            </div>
+            <div class="form-group">
+                <label for="workmake">做法步骤</label>
+                <textarea rows="10" type="text" class="form-control" id="workmake" placeholder="请输入做法步骤" name="workmake"
+                    required></textarea>
+                <div class="invalid-feedback">请输入做法步骤！</div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">发布</button>
+            {% if message %}
+                <script>
+                    window.onload = function () {
+                        alert("{{ message }}");
+                    };
+                </script>
+            {% endif %}
+        </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <!-- 网站尾部 -->
+    <footer class="footer fixed-bottom">
+        <div>
+            <span>京公网安备 11010502038268号 京ICP备09012748号</span>
+        </div>
+        <div>
+            <span>京网文【2017】6954-770号 食品流通许可证SP1101061510252413</span>
+        </div>
+    </footer>
+
+</body>
+
+</html>

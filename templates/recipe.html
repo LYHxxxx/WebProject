@@ -1,0 +1,122 @@
+<!-- 食谱界面 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>RecipeWeb</title>
+    <link rel="stylesheet" href="./../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./../static/css/comment.css">
+    <link rel="stylesheet" href="./../static/css/index.css">
+
+    <script type="text/javascript" src="./../static/js/jquery.js"></script>
+    <script type="text/javascript" src="./../static/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="./../static/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top justify-content-center">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand fontsize_0">
+                <img src="./../static/imgs/logo1.png" width="40px" height="40px">
+                <img src="./../static/imgs/logo2.png" width="100%" height="40px">
+            </a>
+            <!-- 功能菜单 -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('index')}}">首页</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{url_for('recipe')}}">食谱</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('food')}}">食材</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('news')}}">饮食新闻</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('userwork')}}">用户作品</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('releasework')}}">发布作品</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">个人中心</a>
+                </li> -->
+            </ul>
+            <!-- 搜索框-表单 -->
+            <form class="form-inline" method="get" action="/search">
+                <div class="input-group input-group-sm" placeholder="搜素食谱、食材">
+                    <input type="text" class="form-control" name="inputname">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit">搜索</button>
+                    </div>
+                </div>
+            </form>
+            <!-- 登录注册按钮 -->
+            {% include 'comment.html' %}
+        </div>
+    </nav>
+    <br><br><br>
+
+    <!-- 主体内容 -->
+    <div class="container">
+        <!-- 菜谱种类导航栏 -->
+        <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+            <ul class="navbar-nav">
+                <li class="nav-item {% if current_url == url_for('recipe') %} active{% endif %}">
+                    <a class="nav-link" href="{{url_for('recipe')}}">全部</a>
+                </li>
+                {% for type in types %}
+                <li class="nav-item {% if current_url == url_for('recipe_type', recipe_type=type) %} active{% endif %}">
+                    <a class="nav-link" href="{{url_for('recipe_type', recipe_type=type)}}">{{ type }}</a>
+                </li>
+                {% endfor %}
+        </nav>
+
+        <!-- 菜谱展示区域，按照分类展示 -->
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div id="home" class="container tab-pane active"><br>
+                <div class="recipe_card">
+                    <!-- 食谱表格 -->
+                    <div class="recipe_table">
+                        <div class="row">
+                            {% for recipe in recipes %}
+                                <div class="col-4">
+                                    <a href="{{url_for('detail', ID=recipe['id'])}}?html_id=1" title="{{ recipe['name'] }}">
+                                        <img  class="rounded" src="{{ recipe['img'] }}" width="100%" height="250px">
+                                        <p class="text-center">{{ recipe['name'] }}</p>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <!-- 分页区域 -->
+                        <div class="page_nums">
+                            {{ paginate.links }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <!-- 网站尾部 -->
+    <footer class="footer fixed-bottom">
+        <div>
+            <span>京公网安备 11010502038268号 京ICP备09012748号</span>
+        </div>
+        <div>
+            <span>京网文【2017】6954-770号 食品流通许可证SP1101061510252413</span>
+        </div>
+    </footer>
+
+</body>
+
+</html>
