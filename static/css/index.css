@@ -1,0 +1,84 @@
+/* body背景颜色 */
+body{
+    background-color: rgb(192, 200, 209);
+}
+
+/* 轮播图片大小 */
+.carousel-inner img {
+    width: 100%;
+    height: 400px;
+}
+
+/* a标签"更多"的样式 */
+.more{
+    color: black;
+    float: right;
+}
+
+/* 热门食材表格样式 */
+.food_table{
+    border-radius: 10px;
+    background-color: rgb(111, 168, 184);
+    padding: 20px 20px 0px 20px;
+}
+
+/* 饮食新闻表格样式 */
+.news_table{
+    border-radius: 10px;
+    background-color: rgb(137, 137, 137);
+    padding: 0px 20px 20px 20px;
+}
+
+/* 新闻文字描述样式 */
+.news_txt{
+    position: relative;
+    bottom: -30px;
+}
+
+/* 新闻标题样式 */
+.news_title{
+    font-size: 20px;
+    font-weight: 800;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    width:300px;
+    display: inline-block;
+}
+
+/* 用户作品表格样式 */
+.userwork_table{
+    border-radius: 10px;
+    background-color: rgb(78, 118, 107);
+    padding: 0px 20px 20px 20px;
+}
+
+.page_nums{
+    width: 300px;
+    margin: 0 auto;
+}
+
+/* 食谱标题样式 */
+.recipe_title{
+    font-size: 25px;
+    font-weight: 800;
+    color: coral;
+}
+
+/* 作品标题样式 */
+.work_title{
+    font-size: 25px;
+    font-weight: 800;
+    color: coral;
+    text-align: center;
+}
+/* 作者与时间样式 */
+.work_time{
+    font-size: 16px;
+    font-weight: 400;
+    color: rgb(148, 147, 147);
+    text-align: center
+}

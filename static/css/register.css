@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(58, 127, 205);
+}
+.content{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+.logo_txt{
+    text-align: center;
+    color: azure;
+    font-family: serif;
+    margin-bottom: 15px;
+}
+.register{
+    width: 500px;
+    /* height: 400px; */
+    background-color: rgb(160, 182, 207);
+    padding: 40px;
+}

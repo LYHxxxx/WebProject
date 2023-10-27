@@ -1,0 +1,30 @@
+/* 字号为0，可以去掉空格 */
+.fontsize_0 {
+    font-size: 0;
+}
+
+/* a标签下的p标签中字体颜色为黑色 */
+a p{
+    color: black;
+}
+
+/* a标签下的span标签中字体颜色为黑色 */
+a span{
+    color: black;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+/* display属性为内联-块级 */
+.inline_block{
+    display: inline-block;
+}
+
+/* 网站尾部样式 */
+.footer{
+    background-color: rgb(241, 241, 241);
+    text-align: center;
+    font-size: 12px;
+    color: rgb(132, 132, 132);
+    padding: 5px 0;
+}
